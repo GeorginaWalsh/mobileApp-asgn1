@@ -1,5 +1,18 @@
 package org.setu.gwalsh.console.main
 
-fun main(args: Array<String>){
+import mu.KotlinLogging
+import org.setu.gwalsh.console.controllers.StudentController
+import org.setu.gwalsh.console.models.StudentMemStore
+import org.setu.gwalsh.console.models.StudentModel
+import org.setu.gwalsh.console.views.StudentView
+
+val logger = KotlinLogging.logger {}
+
+val students = StudentMemStore()
+val studentView = StudentView()
+val controller = StudentController()
+
+fun main(args: Array<String>) {
     println("Assignment 1: Kotlin App Version 1.0")
+    StudentController().start()
 }
