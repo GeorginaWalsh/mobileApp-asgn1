@@ -53,7 +53,7 @@ class StudentView {
         student.year = readln().toInt()!!
         print("Enter if the student has finished the course (true/false) : ")
         student.completed = readln().toBoolean()!!
-        print("Enter modules the student is completing : ")
+//        print("Enter modules the student is completing : ")
 //        student.courseModules = readln()!!
 
         return !student.studentId.equals(0) && student.name.isNotEmpty()
@@ -63,18 +63,68 @@ class StudentView {
 
         var tempName: String?
         var tempCourse: String?
+        var tempYear: String?
+        var tempCompleted: String?
 
         if (student != null) {
-            print("Enter a new Name for [ " + student.name + " ] : ")
-            tempName = readln()!!
-            print("Enter a new Course Name for [ " + student.course + " ] : ")
-            tempCourse = readln()!!
+            print("Note: Student ID's cannot be updated.\n\n")
+            print("Updating student: " + student + "\n\n")
 
-            if (!tempName.isNullOrEmpty() && !tempCourse.isNullOrEmpty()) {
+            print("Enter an updated name. Previous value: [ " + student.name + " ] : ")
+            tempName = readln()!!
+            if (!tempName.isNullOrEmpty() && !tempName.contains("^[0-9!\"'£$%^&*()_\\-+=<>?{}\\[\\]/\\\\]") ) {
                 student.name = tempName
-                student.course = tempCourse
-                return true
+            } else {
+                print("Previous entry invalid. \nEnter an updated name. Previous value: [ " + student.name + " ] : ")
+                tempName = readln()!!
+                if (!tempName.isNullOrEmpty() && !tempName.contains("^[0-9!\"'£$%^&*()_\\-+=<>?{}\\[\\]/\\\\]") ) {
+                    student.name = tempName
+                } else {
+                    print("\nRepeated invalid entry - Name unable to be updated.\n")
+                }
             }
+            print("Enter an updated course name. Previous value: [ " + student.course+ " ] : ")
+            tempCourse = readln()!!
+            if (!tempCourse.isNullOrEmpty() &&  "[a-zA-Z]+".toRegex().matches(tempCourse)) {
+                student.course = tempCourse
+            } else {
+                print("Previous entry invalid. \nEnter an updated course. Previous value: [ " + student.course + " ] : ")
+                tempCourse = readln()!!
+                if (!tempCourse.isNullOrEmpty() && "[a-zA-Z]+".toRegex().matches(tempCourse) ) {
+                    student.course = tempCourse
+                } else {
+                    print("\nRepeated invalid entry - Course name unable to be updated.\n")
+                }
+            }
+
+            print("Enter an updated number for the student's year within their course. Previous value: [ " + student.year + " ] : ")
+            tempYear = readln()!!
+            if (tempYear.contains("[0-9]".toRegex())) {
+                student.year = tempYear.toInt()
+            } else {
+                print("Previous entry invalid. \nEnter an updated year. Previous value: [ " + student.year + " ] : ")
+                tempYear = readln()!!
+                if (tempYear.contains("[0-9]".toRegex())) {
+                    student.year = tempYear.toInt()
+                } else {
+                    print("\nRepeated invalid entry - Year unable to be updated.\n")
+                }
+            }
+
+            print("Enter an updated completion status. Previous value: [ " + student.completed + " ] (true/false): ")
+            tempCompleted = readln()!!
+            if (tempCompleted.toBoolean() == true || false) {
+                student.completed = tempCompleted.toBoolean()
+            } else {
+                print("Previous entry invalid. \nEnter an updated completion status. Previous value: [ " + student.completed + " ] : (true/false)")
+                tempCompleted = readln()!!
+                if (tempCompleted .toBoolean() == true || false ) {
+                    student.completed = tempCompleted.toBoolean()
+                } else {
+                    print("\nRepeated invalid entry - Completion status unable to be updated.\n")
+                }
+            }
+            return true
         }
         return false
     }

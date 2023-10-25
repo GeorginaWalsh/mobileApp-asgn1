@@ -37,7 +37,7 @@ class StudentJSONStore : StudentStore {
     }
 
     override fun create(student: StudentModel) {
-        student.studentId = generateRandomId()
+        student.id = generateRandomId()
         students.add(student)
         serialize()
     }
@@ -47,6 +47,8 @@ class StudentJSONStore : StudentStore {
         if (foundStudent != null) {
             foundStudent.name = student.name
             foundStudent.course = student.course
+            foundStudent.year = student.year
+            foundStudent.completed = student.completed
         }
         serialize()
     }

@@ -19,8 +19,6 @@ class StudentController {
     }
 
     fun start() {
-        org.setu.gwalsh.console.main.logger.info { "Launching Student Recording Console App" }
-        println("Assignment 1: Kotlin App Version 1.0")
 
         var input: Int
 
@@ -102,6 +100,7 @@ class StudentController {
 
     fun dummyData() {
         students.create(StudentModel(
+            id = 999,
             studentId = 666,
             name = "Lucifer Morningstar",
             course = "Philosophy",

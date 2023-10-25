@@ -1,6 +1,7 @@
 package org.setu.gwalsh.console.models
 
 data class StudentModel(
+    var id: Long=0,
     var studentId: Long = 0,
     var name: String = "",
     var course: String = "",
