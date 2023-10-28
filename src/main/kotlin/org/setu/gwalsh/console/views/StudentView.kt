@@ -75,7 +75,7 @@ class StudentView {
             if (!tempName.isNullOrEmpty() && !tempName.contains("^[0-9!\"'£$%^&*()_\\-+=<>?{}\\[\\]/\\\\]") ) {
                 student.name = tempName
             } else {
-                print("Previous entry invalid. \nEnter an updated name. Previous value: [ " + student.name + " ] : ")
+                print("Previous entry invalid (Note: Numbers and special characters are not permitted). \nEnter an updated name. Previous value: [ " + student.name + " ] : ")
                 tempName = readln()!!
                 if (!tempName.isNullOrEmpty() && !tempName.contains("^[0-9!\"'£$%^&*()_\\-+=<>?{}\\[\\]/\\\\]") ) {
                     student.name = tempName
@@ -88,7 +88,7 @@ class StudentView {
             if (!tempCourse.isNullOrEmpty() &&  "[a-zA-Z]+".toRegex().matches(tempCourse)) {
                 student.course = tempCourse
             } else {
-                print("Previous entry invalid. \nEnter an updated course. Previous value: [ " + student.course + " ] : ")
+                print("Previous entry invalid (Note: Numbers are not permitted). \nEnter an updated course. Previous value: [ " + student.course + " ] : ")
                 tempCourse = readln()!!
                 if (!tempCourse.isNullOrEmpty() && "[a-zA-Z]+".toRegex().matches(tempCourse) ) {
                     student.course = tempCourse
@@ -99,12 +99,12 @@ class StudentView {
 
             print("Enter an updated number for the student's year within their course. Previous value: [ " + student.year + " ] : ")
             tempYear = readln()!!
-            if (tempYear.contains("[0-9]".toRegex())) {
+            if (tempYear.contains("[1-4]".toRegex())) {
                 student.year = tempYear.toInt()
             } else {
-                print("Previous entry invalid. \nEnter an updated year. Previous value: [ " + student.year + " ] : ")
+                print("Previous entry invalid (Note: Number must be from 1 to 4). \nEnter an updated year. Previous value: [ " + student.year + " ] : ")
                 tempYear = readln()!!
-                if (tempYear.contains("[0-9]".toRegex())) {
+                if (tempYear.contains("[1-4]".toRegex())) {
                     student.year = tempYear.toInt()
                 } else {
                     print("\nRepeated invalid entry - Year unable to be updated.\n")
@@ -116,7 +116,7 @@ class StudentView {
             if (tempCompleted.toBoolean() == true || false) {
                 student.completed = tempCompleted.toBoolean()
             } else {
-                print("Previous entry invalid. \nEnter an updated completion status. Previous value: [ " + student.completed + " ] : (true/false)")
+                print("Previous entry invalid (Note: Status must be written as true or false). \nEnter an updated completion status. Previous value: [ " + student.completed + " ] : (true/false)")
                 tempCompleted = readln()!!
                 if (tempCompleted .toBoolean() == true || false ) {
                     student.completed = tempCompleted.toBoolean()
