@@ -21,6 +21,11 @@ fun generateRandomId(): Long {
 class StudentJSONStore : StudentStore {
     var students = mutableListOf<StudentModel>()
 
+    val neutralMenuBlue = "\u001b[34m"
+    val badInputRed = "\u001b[31m"
+    val goodInputGreen = "\u001b[32m"
+    val reset = "\u001b[0m"
+
     init {
         if (exists(JSON_FILE)) {
             deserialize()
@@ -54,7 +59,7 @@ class StudentJSONStore : StudentStore {
     }
 
     internal fun logAll() {
-        students.forEach { logger.info("${it}") }
+        students.forEach { logger.info(goodInputGreen + "${it}" + reset) }
     }
 
     private fun serialize() {

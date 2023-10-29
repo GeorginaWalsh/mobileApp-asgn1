@@ -13,9 +13,13 @@ class StudentController {
     val studentView = StudentView()
     val logger = KotlinLogging.logger {}
 
+    val neutralMenuBlue = "\u001b[34m"
+    val badInputRed = "\u001b[31m"
+    val goodInputGreen = "\u001b[32m"
+    val reset = "\u001b[0m"
+
     init {
-        logger.info { "Launching Student Recording Console App" }
-        println("Assignment 1: Kotlin App Version 1.0")
+        logger.info { neutralMenuBlue + "Launching Student Recording Console App" + reset}
     }
 
     fun start() {
@@ -31,12 +35,12 @@ class StudentController {
                 4 -> controller.search()
                 5 -> controller.delete()
                 -99 -> controller.dummyData()
-                -1 -> println("Exiting App")
-                else -> println("Invalid Option")
+                -1 -> println(goodInputGreen + "Exiting App")
+                else -> println(badInputRed + "Invalid Option" + reset)
             }
             println()
         } while (input != -1)
-        org.setu.gwalsh.console.main.logger.info { "Shutting Down Student Recording Console App" }
+        org.setu.gwalsh.console.main.logger.info { goodInputGreen + "Shutting Down Student Recording Console App" }
     }
 
     fun menu() :Int { return studentView.menu() }
@@ -44,13 +48,15 @@ class StudentController {
     fun add(){
         var addStudent = StudentModel()
 
-        if (studentView.addStudentData(addStudent))
+        if (studentView.addStudentData(addStudent)) {
             students.create(addStudent)
-        else
-            logger.info("Student Not Added")
+            println(goodInputGreen + "Student Added" + reset)
+        } else
+            logger.info(badInputRed + "Student Not Added" + reset)
     }
 
     fun list() {
+        println(goodInputGreen + "Listing Students" + reset)
         studentView.listStudents(students)
     }
 
@@ -64,22 +70,24 @@ class StudentController {
             if(studentView.updateStudentData(updateStudent)) {
                 students.update(updateStudent)
                 studentView.showStudent(updateStudent)
-                logger.info("Student Information Updated : [ $updateStudent ]")
+                logger.info(goodInputGreen + "Student Information Updated : [ $updateStudent ]" + reset)
             }
             else
-                logger.info("Student Information Not Updated")
+                logger.info(badInputRed + "Student Information Not Updated" + reset)
         }
         else
-            println("Student Information Not Updated...")
+            println(badInputRed + "Student Information Not Updated..." + reset)
     }
 
     fun search() {
         val searchStudent = search(studentView.getId())!!
+        println(goodInputGreen + "Searching for Student: " + reset)
         studentView.showStudent(searchStudent)
     }
 
     fun search(id: Long) : StudentModel? {
         var foundStudent = students.findOne(id)
+        println(goodInputGreen + "Searching for Student: " + reset)
         return foundStudent
     }
 
@@ -90,11 +98,11 @@ class StudentController {
 
         if(deleteStudent != null) {
             students.delete(deleteStudent)
-            println("Student Information Deleted...")
+            println(goodInputGreen + "Student Information Deleted..." + reset)
             studentView.listStudents(students)
         }
         else
-            println("Student Information Not Deleted...")
+            println(badInputRed + "Student Information Not Deleted..." + reset)
     }
 
 

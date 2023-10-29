@@ -13,6 +13,9 @@ val studentView = StudentView()
 val controller = StudentController()
 
 fun main(args: Array<String>) {
-    println("Assignment 1: Kotlin App Version 1.0")
+    val neutralMenuBlue = "\u001b[34m"
+    val reset = "\u001b[0m"
+
+    println( neutralMenuBlue + "Assignment 1: Kotlin App: Student Recorder Version 1.0.1" + reset )
     StudentController().start()
 }
