@@ -43,7 +43,7 @@ class StudentView {
 
     fun showStudent(student : StudentModel) {
         if(student != null)
-            println( neutralMenuBlue + "student Details [ $student ]" + reset)
+            println( neutralMenuBlue + "Student Details [ $student ]" + reset)
         else
             println( badInputRed + "Student Not Found..." + reset)
     }

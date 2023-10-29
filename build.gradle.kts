@@ -10,6 +10,8 @@ repositories {
 }
 
 dependencies {
+    implementation("junit:junit:4.13.1")
+    implementation("org.junit.jupiter:junit-jupiter:5.8.1")
     testImplementation(kotlin("test"))
     implementation("org.slf4j:slf4j-simple:1.6.1")
     implementation("io.github.microutils:kotlin-logging:1.6.22")
@@ -19,6 +21,7 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
 
 kotlin {
     jvmToolchain(8)
