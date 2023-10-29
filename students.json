@@ -6,5 +6,13 @@
     "course": "Comp",
     "year": 2,
     "completed": true
+  },
+  {
+    "id": -6941907528687589107,
+    "studentId": 1,
+    "name": "John Doe",
+    "course": "Law",
+    "year": 2,
+    "completed": false
   }
 ]

@@ -14,8 +14,8 @@ class StudentController {
     val logger = KotlinLogging.logger {}
 
     init {
-        logger.info { "Launching Student Recording Console App" }
-        println("Assignment 1: Kotlin App Version 1.0")
+        println( "Launching Student Recording Console App" )
+        println("Assignment 1: Kotlin App Version 1.0.0")
     }
 
     fun start() {
