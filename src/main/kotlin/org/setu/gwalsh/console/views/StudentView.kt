@@ -94,13 +94,13 @@ class StudentView {
             }
             print( neutralMenuBlue + "Enter an updated course name. Previous value: [ " + student.course+ " ] : " + reset)
             tempCourse = readln()!!
-            if (!tempCourse.isNullOrEmpty() &&  "[a-zA-Z]+".toRegex().matches(tempCourse)) {
+            if (!tempCourse.isNullOrEmpty() &&  !tempCourse.contains("^[0-9!\"'£$%^&*()_\\-+=<>?{}\\[\\]/\\\\]")) {
                 student.course = tempCourse
             } else {
-                print( badInputRed + "Previous entry invalid (Note: Numbers are not permitted)." + neutralMenuBlue +
+                print( badInputRed + "Previous entry invalid (Note: Numbers and special characters are not permitted)." + neutralMenuBlue +
                         "\nEnter an updated course. Previous value: [ " + student.course + " ] : " + reset)
                 tempCourse = readln()!!
-                if (!tempCourse.isNullOrEmpty() && "[a-zA-Z]+".toRegex().matches(tempCourse) ) {
+                if (!tempCourse.isNullOrEmpty() && !tempCourse.contains("^[0-9!\"'£$%^&*()_\\-+=<>?{}\\[\\]/\\\\]") ) {
                     student.course = tempCourse
                 } else {
                     print( badInputRed + "\nRepeated invalid entry - Course name unable to be updated.\n" + reset)
@@ -124,13 +124,13 @@ class StudentView {
 
             print( neutralMenuBlue + "Enter an updated completion status. Previous value: [ " + student.completed + " ] (true/false): " + reset)
             tempCompleted = readln()!!
-            if (tempCompleted.toBoolean() == true || false) {
+            if (tempCompleted.toBoolean() == true || tempCompleted.toBoolean() == false) {
                 student.completed = tempCompleted.toBoolean()
             } else {
                 print( badInputRed + "Previous entry invalid (Note: Status must be written as true or false)." + neutralMenuBlue +
                         " \nEnter an updated completion status. Previous value: [ " + student.completed + " ] : (true/false)" + reset)
                 tempCompleted = readln()!!
-                if (tempCompleted .toBoolean() == true || false ) {
+                if (tempCompleted.toBoolean() == true || tempCompleted.toBoolean() == false ) {
                     student.completed = tempCompleted.toBoolean()
                 } else {
                     print( badInputRed + "\nRepeated invalid entry - Completion status unable to be updated.\n" + reset)
